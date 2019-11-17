@@ -1,5 +1,5 @@
 export default {
-    formateDate(time) {
+    formateDate(time) {//时间格式化
         if (!time) {
             return '';
         }
@@ -10,5 +10,19 @@ export default {
             + date.getHours() + ':'
             + date.getMinutes() + ':'
             + date.getSeconds();
+    },
+    pagination(data,callback){
+        return {
+            onChange:(current)=>{
+                callback(current);
+            },
+            current:data.page,//当前页数
+            pageSize:data.pageSize,//每页显示
+            total: data.total,//总条数
+            showTotal:()=>{
+                return `共${data.total}条`
+            },
+            showQuickJumper:true,//快速跳转
+        };
     }
 }

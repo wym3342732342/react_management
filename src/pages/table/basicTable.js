@@ -1,6 +1,7 @@
 import React from "react";
-import {Alert, Card, message, Spin, Table} from "antd";
+import {Card, message, Spin, Table} from "antd";
 import Axios from "../../axios";
+import Utils from "../../utils/utils";
 export default class BaseicTabel extends React.Component{
 
     state = {
@@ -51,8 +52,13 @@ export default class BaseicTabel extends React.Component{
         this.request();
     }
 
-    //动态表哥加载
+    params = {
+        page: 1
+    };
+
+    //动态表格加载
     request = () => {
+        let _this = this;
         this.setState({
             loading: true
         });
@@ -60,13 +66,17 @@ export default class BaseicTabel extends React.Component{
             url: '/table/list',
             data: {
                 params: {
-                    page: 1
+                    page: this.params.page
                 },
                 //isShowLoading: true
             }
         }).then((data) => {
             this.setState({
                 dataSource2: data.list,
+                pagination: Utils.pagination(data, (current) => {
+                    _this.params.page = current;
+                    this.request();
+                }),
                 loading: false
             })
         }).catch(() => {
@@ -236,6 +246,27 @@ export default class BaseicTabel extends React.Component{
                                         },//鼠标移入会
                                     }
                                 }}
+                            />
+                    }
+                </Card>
+
+                <Card title="Mock-分页" style={{marginTop: "10px"}}>
+                    {
+                        loading ?
+                            <Spin tip="加载中...">
+                                <Table
+                                    bordered//边框
+                                    columns={columns}
+                                    dataSource={this.state.dataSource2}
+                                    pagination={false}
+                                />
+                            </Spin>
+                            :
+                            <Table
+                                bordered//边框
+                                columns={columns}
+                                dataSource={this.state.dataSource2}
+                                pagination={this.state.pagination}
                             />
                     }
                 </Card>
