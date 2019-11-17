@@ -1,0 +1,22 @@
+@import "default";//倒入
+@import "loading";
+//整体布局less
+.container{
+   display: flex;
+  .nav-left{
+    width: 15%;
+    min-width: 180px;/*最小宽度*/
+    height: calc(100vh);
+    background-color: #001925;
+  }
+  .main{
+    width: 85%;
+    height: calc(100vh);
+    background-color: @colorL;
+    overflow: auto;//页面自动滚动
+  }
+  .content {
+    position: relative;
+    padding: 20px;
+  }
+}
