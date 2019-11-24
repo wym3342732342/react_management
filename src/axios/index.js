@@ -25,7 +25,8 @@ export default class Axios {
             loading = document.getElementById('ajaxLoading');
             loading.style.display = 'block';
         }
-        const baseApi = "https://www.easy-mock.com/mock/5dcfdce87bb8937ba86e2986/mockapi/";
+        const baseApi = "https://www.easy-mock.com/mock/5dd2936aa881483f4735b823/hotel/";
+
         return new Promise((resolve,reject)=>{//(成功，失败)
             axios({
                 url: options.url,
@@ -41,6 +42,7 @@ export default class Axios {
 
                 if (response.status == '200') {
                     const {data} = response;
+
                     if (data.code == '0') {//判断自定义的状态码
                         resolve(data.data);//直接将返回数据放入，不考虑其他
                     }else{

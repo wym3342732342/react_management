@@ -1,5 +1,16 @@
 @import "default";//倒入
 @import "loading";
+ul,li{
+  list-style: none;
+}
+.clearfix{
+  &::after{
+    content:' ';
+    clear:both;
+    display: block;
+    visibility: hidden;
+  }
+}
 //整体布局less
 .container{
    display: flex;
@@ -8,6 +19,7 @@
     min-width: 180px;/*最小宽度*/
     height: calc(100vh);
     background-color: #001925;
+    overflow: auto;//页面自动滚动
   }
   .main{
     width: 85%;
@@ -18,5 +30,19 @@
   .content {
     position: relative;
     padding: 20px;
+  }
+}
+.content-wrap{
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  margin-top: -3px;
+  .ant-table-wrapper{
+    margin-left: -1px;
+    margin-right: -2px;
+  }
+}
+.ant-card{
+  button{
+    margin-right: 10px;
   }
 }

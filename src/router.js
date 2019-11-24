@@ -17,6 +17,7 @@ import FormLogin from "./pages/form/login";
 import FormRegister from "./pages/form/register";
 import BaseicTabel from "./pages/table/basicTable";
 import HighTale from "./pages/table/highTable";
+import Common from "./common";
 
 
 export default class IRouter extends React.Component{
@@ -26,6 +27,12 @@ export default class IRouter extends React.Component{
                 <App>
                     <Redirect exact from="/" to='/admin/home' />
                     <Route path='/login' component={Login}/>
+                    <Route path="/common" render={() =>
+                        <Common>
+                            {/*<Route path="/common/order/detail/:orderId" component={OrderDetail} />*/}
+                        </Common>
+                    }
+                    />
                     <Route path='/admin' render={()=>
                         <Admin>
                             <Switch>

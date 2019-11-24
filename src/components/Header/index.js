@@ -3,12 +3,14 @@ import {Col, Row} from "antd";
 import './index.less'
 import Utils from '../../utils/utils'
 import axios from "../../axios";
+import http from "../../http";
+import {withRouter} from "react-router-dom";
 
-export default class Header extends React.Component{
+class Header extends React.Component{
+    state = {
+        userName: ""
+    };
     componentWillMount() {
-        this.setState({
-            userName: "YiMing"
-        });
         setInterval(() => {//刷新事件
             let sysTime = Utils.formateDate(new Date().getTime());
             this.setState({
@@ -17,6 +19,19 @@ export default class Header extends React.Component{
         },1000);
         this.getWeatherAPIDate();
     }
+
+    componentDidMount() {
+        this.getLoginInformation();
+    }
+
+    getLoginInformation = () => {
+        http.get('/stock/userInfo').then(({data}) => {
+            // debugger;
+            this.setState({
+                userName: data.userName
+            });
+        });
+    };
 
     //获取天气
     getWeatherAPIDate = () => {
@@ -37,29 +52,43 @@ export default class Header extends React.Component{
     };
 
     render() {
+        const {userName} = this.state;
+        const {menuType} = this.props;
         return (
             <div className='header'>
                 <Row className='header-top'>
-                    <Col spam='24'>
-                        <span>欢迎您，{this.state.userName}</span>
+                    {
+                        menuType?
+                            <Col span="6" className="logo">
+                                <img src="/assets/logo-ant.svg" alt=""/>
+                                <span>IMooc 通用管理系统</span>
+                            </Col> : ''
+                    }
+                    <Col span={menuType?18:24}>
+                        <span>{userName&&"欢迎您，" + userName}</span>
                         <a href="#">退出</a>
                     </Col>
                 </Row>
-
-                <Row className='breadcrumb'>
-                    <Col span='4' className='breadcrumb-title'>
-                        首页
-                    </Col>
-                    <Col span='20' className='weather'>
-                        <span className='date'>{this.state.sysTime}</span>
-                        <span className='weather-img'>
-                            <img src={this.state.dayPicture} alt=""/>
-
-                        </span>
-                        <span className='weather-detail'>{this.state.weather}</span>
-                    </Col>
-                </Row>
+                {
+                    menuType?'':
+                        <Row className="breadcrumb">
+                            <Col span="4" className="breadcrumb-title">
+                                {/*userName || */}首页
+                            </Col>
+                            <Col span="20" className="weather">
+                                <span className="date">{this.state.sysTime}</span>
+                                <span className="weather-img">
+                                    <img src={this.state.dayPictureUrl} alt="" />
+                                </span>
+                                <span className="weather-detail">
+                                    {this.state.weather}
+                                </span>
+                            </Col>
+                        </Row>
+                }
             </div>
         );
     }
 }
+
+export default withRouter(Header);
