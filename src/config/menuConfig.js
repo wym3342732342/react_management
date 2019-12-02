@@ -1,124 +1,109 @@
 export default [
     {
         title:'首页',
-        key:'/admin/home'
+        key:'/home',
+        icon:'home'
+    },{
+        title:'会员管理',
+        key:'/member/statistics',
+        icon:'user'
     },
     {
         title:'UI',
-        key:'/admin/ui',
+        key:'/ui',
+        icon:'home',
         children:[
             {
                 title:'按钮',
-                key:'/admin/ui/buttons',
+                key:'/ui/buttons',
             },
             {
                 title:'弹框',
-                key:'/admin/ui/modals',
+                key:'/ui/modals',
             },
             {
                 title:'Loading',
-                key:'/admin/ui/loadings',
+                key:'/ui/loadings',
             },
             {
                 title:'通知提醒',
-                key:'/admin/ui/notification',
+                key:'/ui/notification',
             },
             {
                 title:'全局Message',
-                key:'/admin/ui/messages',
+                key:'/ui/messages',
             },
             {
                 title:'Tab页签',
-                key:'/admin/ui/tabs',
+                key:'/ui/tabs',
             },
             {
                 title:'图片画廊',
-                key:'/admin/ui/gallery',
+                key:'/ui/gallery',
             },
             {
                 title:'轮播图',
-                key:'/admin/ui/carousel',
+                key:'/ui/carousel',
             }
         ]
     },
     {
         title:'表单',
-        key:'/admin/form',
+        key:'/form',
+        icon:'bars',
         children:[
             {
                 title:'登录',
-                key:'/admin/form/login',
+                key:'/form/login',
             },
             {
                 title:'注册',
-                key:'/admin/form/reg',
+                key:'/form/reg',
             }
         ]
     },
     {
         title:'表格',
-        key:'/admin/table',
+        key:'/table',
+        icon:'table',
         children:[
             {
                 title:'基础表格',
-                key:'/admin/table/basic',
+                key:'/table/basic',
             },
             {
                 title:'高级表格',
-                key:'/admin/table/high',
+                key:'/table/high',
             }
         ]
     },
     {
         title:'富文本',
-        key:'/admin/rich'
-    },
-    {
-        title:'城市管理',
-        key:'/admin/city'
-    },
-    {
-        title:'订单管理',
-        key:'/admin/order',
-        btnList:[
-            {
-                title:'订单详情',
-                key:'/admin/detail'
-            },
-            {
-                title:'结束订单',
-                key:'/admin/finish'
-            }
-        ]
-    },
-    {
-        title:'员工管理',
-        key:'/admin/user'
-    },
-    {
-        title:'车辆地图',
-        key:'/admin/bikeMap'
+        key:'/rich',
+        icon:'container'
     },
     {
         title:'图标',
-        key:'/admin/charts',
+        key:'/charts',
+        icon:'layout',
         children:[
             {
                 title:'柱形图',
-                key:'/admin/charts/bar'
+                key:'/charts/bar'
             },
             {
                 title:'饼图',
-                key:'/admin/charts/pie'
+                key:'/charts/pie'
             },
             {
                 title:'折线图',
-                key:'/admin/charts/line'
+                key:'/charts/line'
             },
         ]
     },
     {
         title:'权限设置',
-        key:'/admin/permission'
+        key:'/permission',
+        icon:'coffee'
     },
 ];

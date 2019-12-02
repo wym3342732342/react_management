@@ -1,0 +1,59 @@
+@import '../../../style/default.less';
+.king_page{
+  height: calc(100vh);
+  .logo {
+    background: #282c34;
+    height: 65px;
+    //background: rgba(255, 255, 255, 0.2);
+    padding: 16px 10px;
+    //margin: 16px;
+    //line-height: 32px;
+    //text-align: center;
+    //font-size: 18px;
+    img{
+      height: 32px;
+      //vertical-align: middle;
+    }
+    span{
+      margin-left: 5px;
+      color: #9cb3c5;
+      font-size: 14px;
+    }
+  }
+
+  .king_sider{
+    overflow: auto;//页面自动滚动
+    height: 100%;
+  }
+
+  .king_right_page{
+    height: calc(100vh);
+
+    .king_header{
+      background: #fff;
+      height: 65px;
+      padding: 0 50px 0 15px;
+      .header-top{
+        font-size: 18px;
+      }
+    }
+
+    .king_content{
+      //height: calc(75vh);
+      margin: 0 16px;
+
+      .king_subject{
+        padding: 12px;
+        background: #fff;
+        height: calc(75vh);
+        border-bottom-color: #fff;
+        overflow: auto;//页面自动滚动
+      }
+    }
+
+    .king_footer{
+      text-align: center;
+      height: calc(10vh);
+    }
+  }
+}
