@@ -1,7 +1,8 @@
 import React from 'react'
-import {Form, Input, Button} from 'antd'
+import {Form, Input, Button, message} from 'antd'
 import Footer from '../../components/Footer'
 import './index.less'
+import http from "../../http";
 const FormItem = Form.Item;
 
 export default class Login extends React.Component {
@@ -12,7 +13,11 @@ export default class Login extends React.Component {
     }
 
     loginReq = (params) => {
-        window.location.href = '/#/';
+        http.post("/login", params).then((data) => {
+            window.location.href = '/';
+        }).catch(() => {
+            message.error("用户名或密码错误!");
+        });
     };
 
     render() {
@@ -87,7 +92,7 @@ class LoginForm extends React.Component {
             <Form className="login-form">
                 <FormItem>
                     {getFieldDecorator('username', {
-                        initialValue:'admin',
+                        initialValue:'wanghaha',
                         rules: [{validator: this.checkUsername}]
                     })(
                         <Input placeholder="用户名"/>
@@ -95,7 +100,7 @@ class LoginForm extends React.Component {
                 </FormItem>
                 <FormItem>
                     {getFieldDecorator('password', {
-                        initialValue:'admin',
+                        initialValue:'123456',
                         rules: [{validator: this.checkPassword}]
                     })(
                         <Input type="password" placeholder="密码" wrappedcomponentref={(inst) => this.pwd = inst } />

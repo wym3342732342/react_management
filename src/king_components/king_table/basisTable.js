@@ -32,12 +32,15 @@ export default class BasisTable extends React.Component {
     };
 
     params = {//分页数据
-        page: 1
+        current: 1, //当前页
+        size: 5//每页显示
     };
+    //用于存储搜索条件
+    searchParam = {};
 
     componentDidMount() {
-        const {initParams,Ref,isAuto=true} = this.props;
-        Ref && Ref(this);//将自己传给父组件
+        const {initParams,onRef,isAuto=true} = this.props;
+        onRef && onRef(this);//将自己传给父组件
         if (isAuto) {
             this.searchData(initParams);
         }
@@ -100,16 +103,19 @@ export default class BasisTable extends React.Component {
         this.setState({
             loading: true
         });
+
+        this.searchParam = params ? params : this.searchParam;//保存传入参数
+
         http.get(url, {
             params: {
                 ...this.params,//分页信息
-                ...params//传递查询条件
+                ...this.searchParam//传递查询条件
             },
-        }).then(({data}) => {
+        }).then((data) => {
             this.setState({
-                dataSource: data.list,//设置数据
+                dataSource: data.records,//设置数据
                 pagination: Utils.pagination(data, (current) => {//分页
-                    _this.params.page = current;
+                    _this.params.current = current;
                     this.searchData();
                 }),
                 loading: false//设置加载状态

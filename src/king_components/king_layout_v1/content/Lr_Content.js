@@ -5,6 +5,12 @@ const {Content} = Layout;
 
 class LrContent extends React.Component{
 
+
+    /**
+     * 渲染面包屑
+     * @param menuArray
+     * @returns {*}
+     */
     renderBreadcrumb = (menuArray) => {
         return menuArray.map(item=><Breadcrumb.Item>{item.title}</Breadcrumb.Item>)
     };
@@ -13,15 +19,15 @@ class LrContent extends React.Component{
         const {menuArray} = this.props;
         return (
             <Content className="king_content">
-                <Breadcrumb style={{margin: '16px 0'}}>
+                <Breadcrumb className="bread_crumb" >
                     {
                         this.renderBreadcrumb(menuArray)
                     }
                 </Breadcrumb>
-                <div
+                <Layout
                     className="king_subject">
                     {this.props.children}
-                </div>
+                </Layout>
             </Content>
         );
     }

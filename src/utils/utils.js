@@ -16,8 +16,8 @@ export default {
             onChange:(current)=>{
                 callback(current);
             },
-            current:data.page,//当前页数
-            pageSize:data.pageSize,//每页显示
+            current:data.current,//当前页数
+            pageSize:data.size,//每页显示
             total: data.total,//总条数
             showTotal:()=>{
                 return `共${data.total}条`

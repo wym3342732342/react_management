@@ -40,12 +40,19 @@
 
     .king_content{
       //height: calc(75vh);
-      margin: 0 16px;
+      margin: 0;
+
+      .bread_crumb{
+        margin: 0 16px;
+        text-align: left;
+        line-height: 50px;
+      }
 
       .king_subject{
         padding: 12px;
         background: #fff;
-        height: calc(75vh);
+        //height: calc(75vh);//存在版权信息
+        height: calc(100vh - 115px);//不存在版权信息
         border-bottom-color: #fff;
         overflow: auto;//页面自动滚动
       }

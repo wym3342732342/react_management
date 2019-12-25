@@ -1,10 +1,11 @@
 import React from "react";
-import MenuConfig from "../../config/menuConfig";
+// import MenuConfig from "../../config/menuConfig";
 import {Menu} from "antd";
 import './index.less';
 import {NavLink} from 'react-router-dom'
 import {switchMenu} from "../../redux/action";
 import {connect} from "react-redux";
+import http from "../../http";
 const SubMenu = Menu.SubMenu;
 
 class NavLeft extends React.Component {
@@ -15,14 +16,16 @@ class NavLeft extends React.Component {
     };
 
      componentWillMount() {
-         const menuTreeNode = this.renderMenu(MenuConfig);
-         this.setState({
-             menuTreeNode
+         http.get("/common/menu/query").then((data) => {
+             const menuTreeNode = this.renderMenu(data);
+             this.setState({
+                 menuTreeNode
+             });
+             //设置对应关系
+             let menuArray = this.createMenuArray(data);
+             //将数组转换为Map,并存入state
+             this.arrayToMap(menuArray);
          });
-         //设置对应关系
-         let menuArray = this.createMenuArray(MenuConfig);
-         //将数组转换为Map,并存入state
-         this.arrayToMap(menuArray);
      }
     //设置进map
     arrayToMap = (menuArray) => {

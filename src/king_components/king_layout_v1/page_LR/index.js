@@ -41,7 +41,9 @@ class Page extends React.Component{
                         toggle={this.toggle}
                     />
 
-                    <LrContent>{this.props.children}</LrContent>{/*主内容*/}
+                    <LrContent>
+                        {this.props.children}
+                    </LrContent>{/*主内容*/}
 
                     <LrFooter />{/*尾部*/}
                 </Layout>

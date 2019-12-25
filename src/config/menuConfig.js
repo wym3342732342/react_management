@@ -3,10 +3,28 @@ export default [
         title:'首页',
         key:'/home',
         icon:'home'
-    },{
+    },
+    {
         title:'会员管理',
         key:'/member/statistics',
         icon:'user'
+    },
+    {
+        title:'自定义组件',
+        key:'/component',
+        icon:'appstore',
+        children:[
+            {
+                title:'滑动图片轮播图',
+                key:'/component/img',
+                icon:'yuque'
+            },
+            {
+                title:'商品展示',
+                key:'/component/list',
+                icon:'yuque'
+            },
+        ]
     },
     {
         title:'UI',

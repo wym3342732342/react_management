@@ -1,14 +1,35 @@
 import React from "react";
-import {Avatar, Badge, Popover} from "antd";
+import {Avatar, Badge, message, Popover} from "antd";
 
 /**
  * 用户信息基础组件v0.1
+ * - trigger：hover移入、focus聚集、click点击.
+ * - placement：防止位置从，什么地方移入.
+ * - title：弹出开篇的名称.
+ * - children：弹出后显示的主题内容
+ * - backgroundColor:放置的图标背景色
+ * - shape：形状
+ * - icon：图标
+ * - rightTopMsg：Badge中的属性
+ * - popoverInfo:包含了，trigger、placement、title
+ * - avatarInfo：包含了，backgroundColor、shape、icon
  */
 class BaseUserInfo extends React.Component{
-    //构造器
-    constructor(props) {
-        super(props);
-        const {popoverInfo,trigger,placement,title,children,avatarInfo,backgroundColor,shape,icon,rightTopMsg} = props;
+
+
+    componentWillMount() {
+        const {
+            popoverInfo,
+            trigger,
+            placement,
+            title,
+            children,
+            avatarInfo,
+            backgroundColor,
+            shape,
+            icon,
+            rightTopMsg
+        } = this.props;
 
         let info = {};
 
@@ -58,12 +79,13 @@ class BaseUserInfo extends React.Component{
                         content={children ? children :
                             <div style={{textAlign: "center", background: "#9cb3c5"}}>暂无用户信息</div>}>
                         <Badge {...rightTopMsg}>
+
                             <Avatar
                                 style={{backgroundColor: backgroundColor ? backgroundColor : '#5580ff'}}
                                 shape={shape ? shape : "square"}
                                 icon={icon ? icon : "user"}
-
                             />
+
                         </Badge>
                     </Popover>
                 </a>

@@ -1,5 +1,6 @@
 @import "default";//倒入
 @import "loading";
+
 ul,li{
   list-style: none;
 }
@@ -44,5 +45,35 @@ ul,li{
 .ant-card{
   button{
     margin-right: 10px;
+  }
+}
+
+//以下是自定义的属性
+.listInfo{ //链接颜色设置
+  a:link{
+    color:black;
+  }
+  a:visited{
+    color:black;
+  }
+  a:hover{
+    color: red;
+  }
+}
+.base_crud{
+  .base_crud_but{
+    padding-left: 10px;
+    .ant-form-item{
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+  }
+  .base_crud_table{
+    margin-left: 1px;
+    margin-right: 1px;
+    border-top: #666666 solid 1px;
+    .basis_table{
+      margin-top: 10px;
+    }
   }
 }

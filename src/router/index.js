@@ -18,8 +18,13 @@ import FormRegister from "../pages/form/register";
 import BaseicTabel from "../pages/table/basicTable";
 import HighTale from "../pages/table/highTable";
 import Common from "../common";
-import Statistics from '../pages/member/statistics'
-import Permission from "../pages/permission";
+import Permission from "../pages/userManage/permission";
+import Img from "../pages/componentShow/img";
+import ShowInfoList from "../pages/componentShow/showInfoList";
+import Account from "../pages/userManage/account";
+import KingUpload from "../pages/componentShow/kingUpload";
+import Role from "../pages/userManage/role";
+import Select from "../pages/componentShow/select";
 
 export default class IRouter extends React.Component{
     render() {
@@ -51,11 +56,22 @@ export default class IRouter extends React.Component{
                                     <Route path='/form/reg' component={FormRegister}/>
                                     <Route path='/table/basic' component={BaseicTabel}/>
                                     <Route path='/table/high' component={HighTale}/>
-                                    {/*会员管理*/}
-                                    <Route path='/member/statistics' component={Statistics}/>
 
+
+                                    {/* 自定义组件系列 */}
+                                    <Route path='/component/img' component={Img}/>{/* 滑动展示轮播图片 */}
+                                    <Route path='/component/list' component={ShowInfoList}/>{/* 滑动展示 */}
+                                    <Route path='/component/upload' component={KingUpload}/>{/* 上传组件 */}
+                                    <Route path='/component/select' component={Select}/>{/* 选择组件 */}
+
+
+                                    {/*账户管理*/}
+                                    <Route path='/user/management/account' component={Account}/>
+                                    {/*角色管理*/}
+                                    <Route path='/user/management/role' component={Role}/>
                                     {/*权限管理*/}
-                                    <Route path='/permission' component={Permission}/>
+                                    <Route path='/user/management/permission' component={Permission}/>
+
 
                                     <Redirect exact from="/" to='/home'/>
                                     <Route component={NoMatch}/>
