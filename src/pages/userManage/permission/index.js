@@ -5,7 +5,7 @@ import {BaseSearchTree} from "../../../king_components/king_tree"
 import {Button, Divider, Form, Input, message, Spin} from "antd";
 import formItemLayout from '../../../king_components/king_style/formItemLayout'
 import http from "../../../http";
-import BaseSelectTree from "./component/BaseSelectTree"
+import {TreeSelector} from "../../../king_components/king_select"
 import PopConfirmation from "../../../king_components/king_shows/PopConfirmation";
 const FormItem = Form.Item;
 
@@ -27,18 +27,6 @@ class Permission extends React.Component {
         const {form:{resetFields}} = this.props;
         resetFields();
         this.setState({loading: false})
-    };
-
-    aaa = () => {
-        const {form: {validateFields}} = this.props;
-        validateFields(['upMenu'], (err, val) => {
-            if (!err) {
-                if (Array.isArray(val.upMenu)) {
-                    message.error("是数组");
-                }
-                message.info(val.upMenu);
-            }
-        });
     };
 
     /**
@@ -175,34 +163,21 @@ class Permission extends React.Component {
                                         )
                                     }
                                 </FormItem>
+
                                 <FormItem label="菜单上级" {...formItemLayout}>
                                     {
                                         getFieldDecorator("upId", {
                                             initialValue: formModel && formModel.upId
                                         })(
-                                            <Input/>
-                                        )
-                                    }
-                                </FormItem>
-                                <FormItem label="菜单上级" {...formItemLayout}>
-                                    {
-                                        getFieldDecorator("upMenu", {})(
-                                            <BaseSelectTree
+                                            <TreeSelector
                                                 isProcess//需要处理
-                                                //multiple//多选
+                                                multiple={false}//多选
+                                                treeDefaultExpandedKeys={['0']}
                                                 indexKey="id"
-                                                url="/common/menu/query"
+                                                url="/common/menu/querySelectTree"
                                             />
                                         )
                                     }
-                                </FormItem>
-                                <FormItem label="菜单上级" {...formItemLayout}>
-                                    <Button
-                                        type="primary"
-                                        onClick={this.aaa}
-                                    >
-                                        保存
-                                    </Button>
                                 </FormItem>
                             </Form>
                         </div>
