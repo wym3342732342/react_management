@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../react_manage/.idea/react_manage.iml" filepath="$PROJECT_DIR$/../react_manage/.idea/react_manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/react_manage.iml" filepath="$PROJECT_DIR$/.idea/react_manage.iml" />
     </modules>
   </component>
 </project>
